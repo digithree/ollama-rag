@@ -1,0 +1,6 @@
+.DS_Store
+__pycache__/
+chroma_db*/
+pdf-files.txt
+*.json
+Modelfile-generated
