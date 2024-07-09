@@ -17,7 +17,7 @@ MAIN_MODEL_NAME = "ragmain"
 WEB_SEARCH_ENABLED = False
 SPEAK_ALOUD_MAC_ENABLED = False
 
-DEBUG_ENABLED = True
+DEBUG_ENABLED = False
 
 db = TinyDB('./config.json')
 agent_table = db.table('agent')
