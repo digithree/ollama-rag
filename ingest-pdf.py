@@ -3,8 +3,6 @@ from langchain_community.embeddings import FastEmbedEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores.utils import filter_complex_metadata
 from langchain_community.document_loaders import PyPDFLoader
-from pdfminer.pdfparser import PDFParser
-from pdfminer.pdfdocument import PDFDocument
 from tinydb import TinyDB, where
 import re, math
 
