@@ -19,7 +19,7 @@ It is written in Python and based on the simple [pdfchat example project](https:
 
 ### Prerequisites
 
-- Your computer is a Mac. It will run on Windows probably with some light tweaks
+- Your computer is a Mac or Linux. It will run on Windows probably with some light tweaks
 - Ollama is installed, see https://ollama.com/download
 - Your base model(s) is in installed, e.g. the defaults are `qwen` and `mistral`. Use `ollama run qwen` for example to fetch the binary, it is a few Gb
 - Python 3+ is installed and available in the environment
@@ -41,7 +41,7 @@ _Make sure Ollama service is running before configuring._
 _Make sure Ollama service is running before running._
 
 - `./run.sh` - launches the chatbot in your default browser
-- or `./cleanRun.sh` - wipe the local dynamica memory (but keep static memory) and launch again
+- or `./cleanRun.sh` - wipe the local dynamic memory (but keep static memory) and launch again
 
 ### Uninstall
 
@@ -69,7 +69,7 @@ This project uses a so-called vector database called ChromaDB, allowing for fast
 
 This amplifies the usefulness of the LLM by appearing to give it contiguous memory and context beyond the actual context window of the LLM, which at present for locally running LLMs is fairly small.
 
-The effect is to give the simulated conversation a more real, humanlike feel, as well as potentially being useful as a way to search (to 'talk to') your collection of PDFs, as well as to keep a series of related conversations going over a long period of time over multiple sessions.
+The effect is to give the simulated conversation a more real, humanlike feel, as well as potentially being useful as a way to search (to 'talk to') your collection of PDFs, keeping a series of related conversations going over a long period of time over multiple sessions.
 
 ### PDF ingestion
 
@@ -78,9 +78,9 @@ PDF ingestion is very simple and uses much of the work from the project I based 
 What I've added is:
 
 - `./scrape-pdf-list.sh <dir>` - scrape all the PDF files from a given directory (and all subdirs) and output to a file `pdf-files.txt`, note that it will append to this file so you can run it multiple times on different locations, or wipe if you need to before running again
-- `python3 ingest-pdf.py` - actually scrape (ingest) the PDFs to a ChromaDB. It will exist in at `./chroma_db_pdfs` directory
+- `python3 ingest-pdf.py` - actually scrape (ingest) the PDFs listed in `pdf-files.txt` to ChromaDB. It will exist in the `./chroma_db_pdfs` directory
 
-Even a moderate amount of PDFs will create a DB of several Gb, and a large collection may be a few dosen Gb. It will also take a long time with CPU processing, in the order of several hours for a few hundred PDFs, or more than a day for thousands. Even then, it will be quickly searchable once processing is complete, and you will see a nice percentage processed log in the terminal
+Even a moderate number of PDFs will create a DB of several Gb, and a large collection may be a few dosen Gb. It will also take a long time with CPU processing, in the order of several hours for a few hundred PDFs, or more than a day for thousands. Even then, it will be quickly searchable once processing is complete, and you will see a nice percentage processed log in the terminal
 
 ChromaDB is really a wrapper on SQLite 3 so you can poke around the DB file will a SQLite viewer but I advise against make changes.
 
