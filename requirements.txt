@@ -1,5 +1,6 @@
-langchain==0.2.7
-langchain_community==0.2.7
+langchain==0.2.6
+langchain_community==0.2.6
+fastembed==0.3.2
 streamlit==1.32.2
 streamlit_chat==0.1.1
 tinydb==4.8.0
