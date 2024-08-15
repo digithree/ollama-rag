@@ -117,7 +117,7 @@ def writeModelfile():
     with open(MODELFILE_GENERATED, 'r') as file:
         contents = file.read()
         for key, value in mapper.items():
-            contents = re.sub(f"\[{str(key)}\]", value, contents)
+            contents = re.sub(f"\\[{str(key)}\\]", value, contents)
     with open(MODELFILE_GENERATED, 'w') as file:
         file.write(contents)
     
