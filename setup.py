@@ -55,7 +55,7 @@ def configAgent():
     if row.get("agent_attitude") == None:
         user_input = inputForAccepted(
             "Agent attitude:",
-            lambda: input(f"E.g. \"researches new topics and discusses existing research.\"\n> {row["agent_name"]}... "),
+            lambda: input(f"E.g. \"researches new topics and discusses existing research.\"\n> {row['agent_name']}... "),
             lambda _: print("Accept?")
         ).strip()
         row["agent_attitude"] = user_input
