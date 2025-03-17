@@ -22,18 +22,20 @@ It is written in Python and based on the simple [pdfchat example project](https:
 - Your computer is a Mac or Linux. It will run on Windows probably with some light tweaks
 - Ollama is installed, see https://ollama.com/download
 - Your base model(s) is in installed, e.g. the defaults are `qwen` and `mistral`. Use `ollama run qwen` for example to fetch the binary, it is a few Gb
-- Python 3+ is installed and available in the environment
+- Python 3+ is installed and available in the environment, use `pyenv` for the best results
 
 ### Install
 
-- Install Python dependencies using `pip3 install -r requirements.txt` (or just `pip` if you don't have mulitple Python versions installed locally)
+`pyenv` was used by the developer and configured for Python 3.10.2
+
+- Install Python dependencies using `pip install -r requirements.txt`
 - (Optional) `ddgr` for websearch, a shell client for the DuckDuckGo search engine. See https://github.com/jarun/ddgr but you can also [install with Brew](https://formulae.brew.sh/formula/ddgr)
 
 ### Configure
 
 _Make sure Ollama service is running before configuring._
 
-- `python3 setup.py` - this will prompt you for details on the agent to create it. It writes to `config.json` which is required by the main scripts `converse.py` and `app.py`. If you want to run it again, delete any existing `config.json`
+- `python setup.py` - this will prompt you for details on the agent to create it. It writes to `config.json` which is required by the main scripts `converse.py` and `app.py`. If you want to run it again, delete any existing `config.json`
 - (optional) scrape PDFs. See section on this below
 
 ### Run
@@ -78,7 +80,7 @@ PDF ingestion is very simple and uses much of the work from the project I based 
 What I've added is:
 
 - `./scrape-pdf-list.sh <dir>` - scrape all the PDF files from a given directory (and all subdirs) and output to a file `pdf-files.txt`, note that it will append to this file so you can run it multiple times on different locations, or wipe if you need to before running again
-- `python3 ingest-pdf.py` - actually scrape (ingest) the PDFs listed in `pdf-files.txt` to ChromaDB. It will exist in the `./chroma_db_pdfs` directory
+- `python ingest-pdf.py` - actually scrape (ingest) the PDFs listed in `pdf-files.txt` to ChromaDB. It will exist in the `./chroma_db_pdfs` directory
 
 Even a moderate number of PDFs will create a DB of several Gb, and a large collection may be a few dosen Gb. It will also take a long time with CPU processing, in the order of several hours for a few hundred PDFs, or more than a day for thousands. Even then, it will be quickly searchable once processing is complete, and you will see a nice percentage processed log in the terminal
 
