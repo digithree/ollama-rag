@@ -47,6 +47,7 @@ def page():
         st.session_state["messages"] = []
         st.session_state["converse"] = Converse()
         st.session_state["enable_msg_history"] = False
+        st.session_state["cb_msg_history"] = False
 
     st.text_input("Message", key="user_input", on_change=process_input)
 
