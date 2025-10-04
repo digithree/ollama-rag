@@ -6,3 +6,5 @@ pdf-files.txt
 Modelfile-generated
 uv.lock
 *.egg-info
+.env
+*.log

@@ -16,6 +16,8 @@ dependencies = [
     "pydantic>=2.7.1",
     "python-dotenv>=1.0.1",
     "duckduckgo-search>=6.1.6",
+    "chromadb",
+    "langchain-chroma",
 ]
 
 [project.optional-dependencies]

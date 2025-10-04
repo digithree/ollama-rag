@@ -1,4 +1,4 @@
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_community.chat_models import ChatOllama
 from langchain_community.embeddings import FastEmbedEmbeddings
 from langchain.schema.runnable import RunnablePassthrough
@@ -143,17 +143,17 @@ class Converse:
         )
         self.memory_manager = MemoryManager(self.tech_model, self.retriever_mem.vectorstore)
 
-        template = """You are talkative and provide lots of specific details from
+        template = f"""You are talkative and provide lots of specific details from
             previous conversation context and books you have read when relevant.
             Keep responses conversational and about the length of a paragraph or less.
-            Your task is to write the next thing that """ + self.agent_name + """ will say
-            only. Do not write more than one message from """ + self.agent_name + """. Do
+            Your task is to write the next thing that {self.agent_name} will say
+            only. Do not write more than one message from {self.agent_name}. Do
             not include any prefix or quotes to the message. Answer as if you
-            are """ + self.agent_name + """, in the first person. If you don't know something,
-            just say \"I don't know\" and nothing else.
-            Context: {context} 
-            """ + self.user_name + "": {input}
-            """ + self.agent_name + ":"""
+            are {self.agent_name}, in the first person. If you don't know something,
+            just say "I don't know" and nothing else.
+            Context: {{context}} 
+            {self.user_name}: {{input}}
+            {self.agent_name}:"""
         self.prompt = PromptTemplate(input_variables=["context", "input"], template=template)
 
         self.chain = (
