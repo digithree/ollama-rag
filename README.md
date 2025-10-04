@@ -26,24 +26,29 @@ It is written in Python and based on the simple [pdfchat example project](https:
 
 ### Install
 
-`pyenv` was used by the developer and configured for Python 3.10.2
+This project uses `uv` for package management. If you don't have `uv`, you can install it following the official instructions: https://astral.sh/docs/uv#installation
 
-- Install Python dependencies using `pip install -r requirements.txt`
-- (Optional) `ddgr` for websearch, a shell client for the DuckDuckGo search engine. See https://github.com/jarun/ddgr but you can also [install with Brew](https://formulae.brew.sh/formula/ddgr)
+- Install Python dependencies using `uv pip install -e .`
 
 ### Configure
 
 _Make sure Ollama service is running before configuring._
 
-- `python setup.py` - this will prompt you for details on the agent to create it. It writes to `config.json` which is required by the main scripts `converse.py` and `app.py`. If you want to run it again, delete any existing `config.json`
+- Create a `.env` file in the root of the project and add the following variables:
+
+```
+AGENT__USER_NAME="User"
+AGENT__AGENT_NAME="Agent"
+MODEL__FAST_MODEL="mistral"
+```
+
 - (optional) scrape PDFs. See section on this below
 
 ### Run
 
 _Make sure Ollama service is running before running._
 
-- `./run.sh` - launches the chatbot in your default browser
-- or `./cleanRun.sh` - wipe the local dynamic memory (but keep static memory) and launch again
+- `uv run` - launches the chatbot in your default browser
 
 ### Uninstall
 
@@ -102,11 +107,7 @@ When generating the chatbot response:
 
 ### Customization
 
-There are three flags in `converse.py`, all turned off but you can turn them on by setting to `True`:
-
-- `WEB_SEARCH_ENABLED = False` - if enabled, will use a web search if LLM responds with "don't know". Requires `ddgr` command (see above). This can be quite good at unblocking a query or getting up to date info.
-- `SPEAK_ALOUD_MAC_ENABLED = False` - if enabled, will use the Mac in-build `say` command to speak the response aloud. It uses the default configured voice, see your Mac speak aloud setting where you can download additional voices, set talking speed, etc.
-- `DEBUG_ENABLED = False` - log information to reveal what the RAG system is picking up from 'memory', what (and if) it extracts for memory, web search keywords, etc.
+- `WEB_SEARCH_ENABLED` in `src/converse.py` - if enabled, will use a web search if LLM responds with "don't know". This can be quite good at unblocking a query or getting up to date info.
 
 ## Additional notes
 

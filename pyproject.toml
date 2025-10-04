@@ -1,0 +1,37 @@
+[project]
+name = "ollama-rag"
+version = "0.1.1"
+description = "A customizable Retrieval-Augmented Generation (RAG) implementation using Ollama."
+authors = [
+    {name = "Simon Kenny", email = "skenwrites@gmail.com"},
+]
+readme = "README.md"
+dependencies = [
+    "langchain>=0.2.6",
+    "langchain-community>=0.2.6",
+    "fastembed>=0.3.2",
+    "streamlit>=1.32.2",
+    "streamlit-chat>=0.1.1",
+    "tinydb>=4.8.0",
+    "pydantic>=2.7.1",
+    "python-dotenv>=1.0.1",
+    "duckduckgo-search>=6.1.6",
+    "pypdf",
+    "chromadb",
+    "langchain-chroma",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2.2",
+]
+
+[project.scripts]
+run = "run:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["src"]
