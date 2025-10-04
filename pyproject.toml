@@ -10,9 +10,9 @@ dependencies = [
     "langchain>=0.2.6",
     "langchain-community>=0.2.6",
     "fastembed>=0.3.2",
-    "streamlit>=1.32.2",
-    "streamlit-chat>=0.1.1",
     "tinydb>=4.8.0",
+    "rich",
+    "prompt-toolkit",
     "pydantic>=2.7.1",
     "python-dotenv>=1.0.1",
     "duckduckgo-search>=6.1.6",
@@ -27,7 +27,7 @@ dev = [
 ]
 
 [project.scripts]
-run = "run:main"
+run = "src.main:main"
 
 [build-system]
 requires = ["setuptools>=61.0"]

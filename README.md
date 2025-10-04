@@ -4,14 +4,14 @@ This project is a customizable Retrieval-Augmented Generation (RAG) implementati
 
 In other words, this project is a chatbot that simulates conversation with a person who remembers previous conversations and can reference a bunch of PDFs.
 
-It is written in Python and based on the simple [pdfchat example project](https://github.com/SonicWarrior1/pdfchat), explained in [this Medium post](https://medium.com/@harjot802/building-a-local-pdf-chat-application-with-mistral-7b-llm-langchain-ollama-and-streamlit-67b314fbab57). Thanks to Harjot / SonicWarrior1.
+It is written in Python and based on the simple [pdfchat example project](https://github.com/SonicWarrior1/pdfchat). Thanks to Harjot / SonicWarrior1.
 
 ## Features
 
 - Configure the agent (chatbot) with a script, or dive into the Modelfile yourself
 - Configure the models used for your chatbot with a script
 - (Optional) Easily scrape your collection of PDFs and ingest with handy scripts
-- Simple interface to run and interact with the chatbot agent using Streamlit
+- Terminal-based chat interface
 - Long term memory, compressing and making searchable with day-bound timestamps
 - Web search when the chatbot cannot come up with a good answer (disabled by default)
 
@@ -48,7 +48,7 @@ MODEL__FAST_MODEL="mistral"
 
 _Make sure Ollama service is running before running._
 
-- `uv run` - launches the chatbot in your default browser
+- `uv run` - launches the chatbot in your terminal.
 
 ### Uninstall
 
@@ -112,3 +112,7 @@ When generating the chatbot response:
 ## Additional notes
 
 I encouarge you to be thoughtful in your usage of this. You can do a lot of things with it that would not be a good idea. It is a toy project intended to experiment with the technology. Don't use it to harm your mental health or that of others.
+
+## Changelog
+
+- 2025-10-04: Removed Streamlit and replaced with a terminal-based chat interface.
