@@ -11,7 +11,7 @@ from langchain.prompts import ChatPromptTemplate
 from datetime import datetime
 from random import randrange
 import re
-from config import settings
+from .config import settings
 
 import logging
 
