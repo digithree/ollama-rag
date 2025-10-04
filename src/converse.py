@@ -42,12 +42,16 @@ class WebSearch:
         return f"This information is available on the web:\n{search_results}"
 
 
+import chromadb
+
 class Retriever:
     def __init__(self, embedding_function):
         self.embedding_function = embedding_function
+        self.client = chromadb.Client()
 
     def get_retriever(self, persist_directory: str, collection_name: str, search_type: str, search_kwargs: dict):
         db = Chroma(
+            client=self.client,
             embedding_function=self.embedding_function,
             persist_directory=persist_directory,
             collection_name=collection_name,
