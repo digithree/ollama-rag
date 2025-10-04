@@ -4,3 +4,5 @@ chroma_db*/
 pdf-files.txt
 *.json
 Modelfile-generated
+uv.lock
+*.egg-info

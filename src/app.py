@@ -1,13 +1,13 @@
 import streamlit as st
 from streamlit_chat import message
 from converse import Converse
-from tinydb import TinyDB
+from config import settings
+import logging
 
-db = TinyDB('./config.json')
-agent_table = db.table('agent')
-agent_table_row = agent_table.all()[0]
-user_name = agent_table_row["user_name"]
-agent_name = agent_table_row["agent_name"]
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+user_name = settings.agent.user_name
+agent_name = settings.agent.agent_name
 
 st.set_page_config(page_title="Talking with " + agent_name)
 
@@ -40,7 +40,7 @@ def process_check_box(target_key: str, cb_key: str):
     try:
         st.session_state[target_key] = st.session_state[cb_key]
     except KeyError as e:
-        print(e)
+        logging.error(e)
 
 def page():
     if len(st.session_state) == 0:
