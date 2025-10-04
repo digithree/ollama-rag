@@ -28,6 +28,9 @@ class PdfIngestor:
         )
 
     def process_pdf(self, filename: str):
+        if not Path(filename).is_file():
+            logging.error(f"File not found: {filename}")
+            return
         # get PDF as chunks
         texts = list(map(lambda c: c.page_content, self.get_pdf_chunks(filename)))
         logging.info(f"\t num chunks: {len(texts)}")
