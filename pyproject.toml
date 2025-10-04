@@ -1,9 +1,9 @@
 [project]
 name = "ollama-rag"
-version = "0.1.0"
+version = "0.1.1"
 description = "A customizable Retrieval-Augmented Generation (RAG) implementation using Ollama."
 authors = [
-    {name = "Simon Kenny", email = "simon.kenny@gmail.com"},
+    {name = "Simon Kenny", email = "skenwrites@gmail.com"},
 ]
 readme = "README.md"
 dependencies = [
