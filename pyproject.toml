@@ -19,6 +19,7 @@ dependencies = [
     "pypdf",
     "chromadb",
     "langchain-chroma",
+    "langchain-ollama",
 ]
 
 [project.optional-dependencies]

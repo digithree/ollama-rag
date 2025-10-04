@@ -1,10 +1,10 @@
 from langchain_chroma import Chroma
-from langchain_community.chat_models import ChatOllama
+from langchain_ollama.chat_models import ChatOllama
 from langchain_community.embeddings import FastEmbedEmbeddings
 from langchain.schema.runnable import RunnablePassthrough
 from langchain.schema.output_parser import StrOutputParser
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.memory import ConversationBufferMemory
+from langchain.memory import ConversationBufferWindowMemory
 from langchain.prompts import PromptTemplate
 from langchain_community.utilities import DuckDuckGoSearchAPIWrapper
 from langchain.prompts import ChatPromptTemplate
@@ -124,7 +124,7 @@ class Converse:
         self.tech_model = ChatOllama(model=settings.model.fast_model)
         self.web_search = WebSearch(self.tech_model)
         self.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1024, chunk_overlap=100)
-        self.memory = ConversationBufferMemory(ai_prefix=self.agent_name)
+        self.memory = ConversationBufferWindowMemory(k=5, ai_prefix=self.agent_name)
 
         retriever_factory = Retriever(FastEmbedEmbeddings())
         self.retriever_mem = retriever_factory.get_retriever(
